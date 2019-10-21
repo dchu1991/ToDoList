@@ -1,5 +1,8 @@
 from django.db import models
 
+# for redirecting after blog post
+from django.urls import reverse
+
 # Create your models here.
 class ToDoList(models.Model):
     title = models.CharField(max_length=256)
@@ -8,3 +11,7 @@ class ToDoList(models.Model):
 
     def __str__(self):
         return self.title
+
+    # to the detailed page
+    def get_absolute_url(self):
+        return reverse('todo_detail', kwargs={'pk':self.pk} )

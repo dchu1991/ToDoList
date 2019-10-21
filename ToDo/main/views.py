@@ -15,11 +15,26 @@ class ToDoListView(ListView):
     ordering = ['-post_time']
 
 
-class ToDoDetailView(ListView):
-    model = ToDoList
-
-class ToDoUpdateView(UpdateView):
+class ToDoDetailView(DetailView):
     model = ToDoList
 
 class ToDoCreateView(CreateView):
     model = ToDoList
+    fields = ['title', 'content']
+
+    def form_valid(self, form):
+        return super().form_valid(form)
+
+class ToDoUpdateView(UpdateView):
+    model = ToDoList
+    fields = ['title', 'content']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+class ToDoDeleteView(DeleteView):
+    model = ToDoList
+    success_url = '/'
+
+

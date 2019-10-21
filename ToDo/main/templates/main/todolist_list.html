@@ -7,11 +7,12 @@
 
     {% for post in object_list %}
         <artiicle class="media content-section">
-            <div class="media-body">
-                <div class="article-metadata">
-                    <h2><a href="#" class="mr-2">{{ post.title }}</a></h2>
-                    <small class="text-muted">{{ post.post_time|date:"F d, Y" }}</small>
-                </div>
+            <div class="article-metadata">
+                <h2>
+                    <a href="{% url 'todo_detail' post.id %}" class="mr-2">{{ post.title }}</a>
+                </h2>
+                <small class="text-muted">{{ post.post_time|date:"F d, Y" }}</small>
+
             </div>
         </artiicle>
     {% endfor %}

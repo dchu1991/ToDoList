@@ -1,0 +1,19 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+
+    <artiicle class="media content-section">
+        <div class="media-body">
+            <div class="article-metadata">
+                <h2>{{ object.title }}</h2>
+                <small class="text-muted">{{ object.post_time|date:"F d, Y" }}</small>
+                <div class="btn-group">
+                        <a href="{% url 'todo_delete' object.id%}" class="btn btn-danger btn-sm">Delete</a>
+                        <a href="{% url 'todo_update' object.id %}" class="btn btn-info btn-sm">Update</a>
+                </div>
+                <p class="article-content">{{ object.content }}</p>
+            </div>
+        </div>
+    </artiicle>
+
+{% endblock content %}

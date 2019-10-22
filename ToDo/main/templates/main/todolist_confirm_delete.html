@@ -4,8 +4,16 @@
 {% block content %}
     <div class = "content-section">
         <form method="POST">{% csrf_token %}
-            <p>Are you sure you want to delete "{{object}}" ?</p>
-            <input type="submit" value="Confirm">
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">
+                    <p>Are you sure you want to delete the post "{{object}}" ?</p>
+                </legend>
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-danger" type="submit">Confirm</button> 
+                <a class="btn btn-outline-secondary" href="{% url 'todo_detail' object.id %}">Cancel</a>
+            </div>
+
         </form>
     </div>
 {% endblock content %}

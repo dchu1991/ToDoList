@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib import messages
 from django.views.generic import (
     ListView, 
     DetailView, 
@@ -31,6 +32,7 @@ class ToDoUpdateView(UpdateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
+        messages.success(request, f'Deletion of {title} is successful.')
         return super().form_valid(form)
 
 class ToDoDeleteView(DeleteView):

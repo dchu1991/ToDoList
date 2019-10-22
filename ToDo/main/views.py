@@ -32,11 +32,17 @@ class ToDoUpdateView(UpdateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
-        messages.success(request, f'Deletion of {title} is successful.')
+        # messages.success(request, f'Deletion of {title} is successful.')
         return super().form_valid(form)
 
 class ToDoDeleteView(DeleteView):
     model = ToDoList
     success_url = '/'
 
+## rest_framework
+from rest_framework import viewsets
+from .serializers import ToDoSerializer
 
+class ToDoAPIView(viewsets.ModelViewSet):
+    queryset = ToDoList.objects.all()
+    serializer_class = ToDoSerializer

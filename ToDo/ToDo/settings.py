@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
     'crispy_forms',
     'main.apps.MainConfig',
     'django.contrib.admin',
@@ -123,3 +124,9 @@ STATIC_URL = '/static/'
 
 # set bootstrap4 to crispy
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# REST_FRAMEWORK pagination
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
